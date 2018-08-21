@@ -715,19 +715,6 @@ static void lcd_implementation_status_screen() {//liu...
 
         }
 
-
-/*        
-        u8g.setPrintPos(35,XYZ_BASELINE);
-        lcd_print(itostr3left(mixing_factor_e0));
-        u8g.setPrintPos(55,XYZ_BASELINE);
-        lcd_printPGM(PSTR("/"));//lcd.write('/');
-
-        //_draw_axis_label(Y_AXIS, PSTR(MSG_Y), blink);
-        u8g.setPrintPos(65,XYZ_BASELINE);
-        lcd_print(itostr3left(100-mixing_factor_e0));
-        u8g.setPrintPos(95,XYZ_BASELINE);
-        lcd_printPGM(PSTR("   "));
-        */
 /**************liu*******/ 
       u8g.setPrintPos(2 * XYZ_SPACING + X_LABEL_POS, XYZ_BASELINE);
       _draw_axis_label(Z_AXIS, PSTR(MSG_Z), blink);

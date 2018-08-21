@@ -38,7 +38,7 @@
 extern unsigned int Z_t,T0_t,B_t;
 extern uint32_t pos_t,E_t;
 extern  char P_file_name[13],recovery;
-
+extern bool filament_switch;
 #if HAS_BUZZER && DISABLED(LCD_USE_I2C_BUZZER)
   #include "buzzer.h"
 #endif
@@ -178,6 +178,7 @@ uint16_t max_display_update_time = 0;
   void lcd_control_temperature_preheat_material2_settings_menu();
   void lcd_control_motion_menu();
   void lcd_control_filament_menu();
+
 
   #if ENABLED(LCD_INFO_MENU)
     #if ENABLED(PRINTCOUNTER)
@@ -3691,6 +3692,17 @@ void kill_screen(const char* lcd_msg) {
     END_MENU();
   }
 
+
+void Switch_Filament_ON(){
+	//SERIAL_ECHOLN("liu......ON ---2\r\n");
+	LCD_MESSAGEPGM(MSG_SWITCH_FILAMENT_ON);
+	filament_switch = true;
+}
+void Switch_Filament_OFF(){
+	//SERIAL_ECHOLN("liu......OFF ---2\r\n");
+	LCD_MESSAGEPGM(MSG_SWITCH_FILAMENT_OFF);
+	filament_switch = false;
+}
   /**
    *
    * "Control" > "Filament" submenu
@@ -3724,7 +3736,16 @@ void kill_screen(const char* lcd_msg) {
         #endif // EXTRUDERS > 2
       #endif // EXTRUDERS > 1
     }
-
+    if(filament_switch==true)
+    {
+    	//SERIAL_ECHOLN("liu......ON ---1\r\n");
+    	MENU_ITEM(function, MSG_SWITCH_FILAMENT_ON, Switch_Filament_OFF);
+    }
+    else
+    {
+    	//SERIAL_ECHOLN("liu......OFF ---1\r\n");
+	MENU_ITEM(function, MSG_SWITCH_FILAMENT_OFF, Switch_Filament_ON);	
+    }
     END_MENU();
   }
 
@@ -4545,9 +4566,9 @@ void kill_screen(const char* lcd_msg) {
   }
 
 #endif // ULTIPANEL
-      #define BTN_EN1      17
-      #define BTN_EN2      16
-  #define BTN_ENC      19
+//      #define BTN_EN1      16//17
+//      #define BTN_EN2      17//16
+//  #define BTN_ENC      19
 void lcd_init() {
 
   lcd_implementation_init();
