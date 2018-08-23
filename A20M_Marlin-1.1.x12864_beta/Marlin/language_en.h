@@ -608,7 +608,7 @@
   #define MSG_TEMPLATE_FILAMENT                   _UxGT("template")
 #endif
 #ifndef MSG_MIX_PRECENT
-  #define MSG_MIX_PRECENT                   _UxGT("mix precent")
+  #define MSG_MIX_PRECENT                   _UxGT("mix percent")
 #endif
 
 #ifndef MSG_ADVANCE_K
