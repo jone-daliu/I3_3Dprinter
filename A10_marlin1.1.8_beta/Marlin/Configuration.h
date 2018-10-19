@@ -68,7 +68,7 @@
 // For a SCARA printer start with the configuration files in
 // example_configurations/SCARA and customize for your machine.
 //
-
+//jone  123
 // @section info
 
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
@@ -101,7 +101,7 @@
  * :[0, 1, 2, 3, 4, 5, 6, 7]
  */
 #define SERIAL_PORT 0
-
+//jone  456
 /**
  * This setting determines the communication speed of the printer.
  *
